@@ -1,12 +1,8 @@
 [
     {
-        "name": "asgfdg",
-        "password": "fdgsfg",
-        "link": "sdfgdsfg"
-    },
-    {
-        "name": "fdsgdfg",
-        "password": "fdgsfg",
-        "link": "fdgsdfg"
+        "account": "gfsdgfdg",
+        "username": "sdfgsdfg",
+        "password": "sdfgsdfg",
+        "email": null
     }
 ]

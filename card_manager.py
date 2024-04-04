@@ -61,7 +61,13 @@ class CardManager(ctk.CTk):
     def load_cards_from_json(self):
         try:
             with open("cards.json", "r") as file:
-                return json.load(file)  # Load data if file exists
+                cards = json.load(file)  # Load data if file exists
+                # Check if each card dictionary has the required keys
+                for card in cards:
+                    if not all(key in card for key in ["account", "username", "password", "email"]):
+                        raise ValueError(
+                            "Invalid card format. Make sure each card contains keys for 'account', 'username', 'password', and 'email'.")
+                return cards
         except FileNotFoundError:
             # Create an empty JSON file if it doesn't exist
             print("No existing cards found. Creating a new empty JSON file.")
