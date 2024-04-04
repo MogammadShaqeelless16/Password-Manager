@@ -18,20 +18,37 @@ def save_credentials():
 # create main window
 root = tk.Tk()
 root.title("Registration")
+root.geometry("500x500")
 
 #create labels and inputs
-name_label = tk.Label(root, text="Enter your username:")
-name_label.pack(pady=5)
-name_entry = tk.Entry(root)
-name_entry.pack(pady=5)
+username_label = tk.Label(root, text="Username:")
+username_label.pack(pady=(150, 5))
 
-password_label = tk.Label(root, text="Enter your password:")
-password_label.pack(pady=5)
-password_entry = tk.Entry(root, show="*")  # Masking password input
+username_entry = tk.Entry(root)
+username_entry.pack(pady=5)
+
+password_label = tk.Label(root, text="Password:")
+password_label.pack()
+
+password_entry = tk.Entry(root, show="*")
 password_entry.pack(pady=5)
 
-#create button to save credentials
-save_button = tk.Button(root, text="Submit", command=save_credentials)
-save_button.pack(pady=5)
+login_button = tk.Button(root, text="Submit", command=save_credentials)
+login_button.pack(pady=5)
+
+register_button = tk.Button(root, text="Register", command=register)
+register_button.pack(side=tk.BOTTOM, anchor=tk.SE, padx=10, pady=10)
+
+# Center horizontally
+root.update_idletasks()
+width = root.winfo_width()
+height = root.winfo_height()
+x = (root.winfo_screenwidth() // 2) - (width // 2)
+y = (root.winfo_screenheight() // 2) - (height // 2)
+root.geometry(f"+{x}+{y}")
+
+
 
 root.mainloop()
+
+

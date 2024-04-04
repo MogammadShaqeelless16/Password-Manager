@@ -2,44 +2,52 @@ import tkinter as tk
 from tkinter import messagebox
 
 def login():
-    entered_name = name_entry.get()
-    entered_password = password_entry.get()
-    
-    try:
-        with open('user_credentials.txt', 'r') as file:
-            for line in file:
-                name, password = line.strip().split(',')
-                if name == entered_name and password == entered_password:
-                    messagebox.showinfo("Information","Login Successful")
-                    return
-        messagebox.showerror("Error", "Invalid credentials. Please try again.")
-    except Exception as e:
-        messagebox.showerror("Error", f"An error occurred: {e}")
+    username = username_entry.get()
+    password = password_entry.get()
 
+    try:
+        with open("user_credentials.txt", "r") as file:
+            for line in file:
+                stored_username, stored_password = line.strip().split(",")
+                if username == stored_username and password == stored_password:
+                    messagebox.showinfo("Success", "Login Successful!")
+                    return
+            messagebox.showerror("Error", "Invalid username or password.")
+    except FileNotFoundError:
+        messagebox.showerror("Error", "User credentials file not found.")
+
+def register():
+    # Implement registration functionality here
+    messagebox.showinfo("Info", "Redirecting to registration page...")
 
 root = tk.Tk()
 root.title("Login")
+root.geometry("500x500")
 
+username_label = tk.Label(root, text="Username:")
+username_label.pack(pady=(150, 5))
 
-
-#create labels and input
-name_label = tk.Label(root, text="Name:")
-name_label.grid(row=0, column=0, padx=10, pady=5)
-name_entry = tk.Entry(root)
-name_entry.grid(row=0, column=1, padx=10, pady=5)
+username_entry = tk.Entry(root)
+username_entry.pack(pady=5)
 
 password_label = tk.Label(root, text="Password:")
-password_label.grid(row=1, column=0, padx=10, pady=5)
-password_entry = tk.Entry(root, show="*") 
-password_entry.grid(row=1, column=1, padx=10, pady=5)
+password_label.pack()
 
-#create login button
-login_button = tk.Button(root, text="Login", command=login)
-login_button.grid(row=2, columnspan=2, padx=10, pady=5)
+password_entry = tk.Entry(root, show="*")
+password_entry.pack(pady=5)
 
-#create login button
-register_button = tk.Button(root, text="Register here!")
-register_button.grid(row=2,column=2,padx=10, pady=5, sticky="ne")
+login_button = tk.Button(root, text="Submit", command=login)
+login_button.pack(pady=5)
 
+register_button = tk.Button(root, text="Register", command=register)
+register_button.pack(side=tk.BOTTOM, anchor=tk.SE, padx=10, pady=10)
+
+# Center horizontally
+root.update_idletasks()
+width = root.winfo_width()
+height = root.winfo_height()
+x = (root.winfo_screenwidth() // 2) - (width // 2)
+y = (root.winfo_screenheight() // 2) - (height // 2)
+root.geometry(f"+{x}+{y}")
 
 root.mainloop()
