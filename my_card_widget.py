@@ -1,21 +1,18 @@
 import customtkinter as ctk
 
 class MyCardWidget(ctk.CTkFrame):
-    def __init__(self, master, account, username, password, email):
+    def __init__(self, master, name, password, link):
         super().__init__(master)
 
-        self.account_label = ctk.CTkLabel(self, text=f"Account: {account}")
-        self.account_label.pack()
+        self.name_label = ctk.CTkLabel(self, text=f"Name: {name}")
+        self.name_label.pack()
 
-        self.username_label = ctk.CTkLabel(self, text=f"Username: {username}")
-        self.username_label.pack()
-
-        self.email_label = ctk.CTkLabel(self, text=f"Email: {email}")
-        self.email_label.pack()
+        self.link_label = ctk.CTkLabel(self, text=f"Link: {link}")
+        self.link_label.pack()
 
         # Placeholder for secure password display and management (consider secure libraries)
         self.password_label = ctk.CTkLabel(
-            self, text=f"Password: {password if not self.is_password_visible else '•••••••••'}")
+            self, text="Password: ••••••••• (hidden)")  # Replace with secure display mechanism
         self.password_label.pack()
 
         self.show_password_button = ctk.CTkButton(
@@ -25,17 +22,14 @@ class MyCardWidget(ctk.CTkFrame):
         # Variable to track password visibility (initially hidden)
         self.is_password_visible = False
 
-        # Store the password for later use
-        self.password = password
-
     def toggle_password_visibility(self):
-        self.is_password_visible = not self.is_password_visible
-
         if self.is_password_visible:
-            # Show the actual password
-            self.password_label.configure(text=f"Password: {self.password}")
-            self.show_password_button.configure(text="Hide Password")
-        else:
-            # Hide the password
-            self.password_label.configure(text="Password: •••••••••")
+            # Replace with actual password retrieval from a secure storage mechanism
+            self.password_label.configure(text=f"Password: ••••••••• (hidden)")
             self.show_password_button.configure(text="Show Password")
+        else:
+            # IMPORTANT: Replace this with a secure password retrieval and display method
+            # (avoid storing passwords in plain text)
+            self.password_label.configure(text=f"Password: (PLACEHOLDER FOR PASSWORD)")
+            self.show_password_button.configure(text="Hide Password")
+        self.is_password_visible = not self.is_password_visible
