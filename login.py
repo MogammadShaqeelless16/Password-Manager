@@ -20,6 +20,8 @@ def login():
 root = tk.Tk()
 root.title("Login")
 
+
+
 #create labels and input
 name_label = tk.Label(root, text="Name:")
 name_label.grid(row=0, column=0, padx=10, pady=5)
@@ -34,6 +36,10 @@ password_entry.grid(row=1, column=1, padx=10, pady=5)
 #create login button
 login_button = tk.Button(root, text="Login", command=login)
 login_button.grid(row=2, columnspan=2, padx=10, pady=5)
+
+#create login button
+register_button = tk.Button(root, text="Register here!")
+register_button.grid(row=2,column=2,padx=10, pady=5, sticky="ne")
 
 
 root.mainloop()
