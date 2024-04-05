@@ -39,7 +39,7 @@ password_entry.pack(pady=5)
 login_button = tk.Button(root, text="Submit", command=save_credentials)
 login_button.pack(pady=5)
 
-register_button = tk.Button(root, text="Register", command=login_forum)
+register_button = tk.Button(root, text="Login", command=login_forum)
 register_button.pack(side=tk.BOTTOM, anchor=tk.SE, padx=10, pady=10)
 
 # Center horizontally
