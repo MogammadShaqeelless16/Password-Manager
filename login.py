@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+# import customtkinter  as
 
 def login():
     username = username_entry.get()
@@ -18,7 +19,7 @@ def login():
 
 def register():
     # Implement registration functionality here
-    messagebox.showinfo("Info", "Redirecting to registration page...")
+    pass
 
 root = tk.Tk()
 root.title("Login")
