@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 def save_credentials():
-    user_name = name_entry.get()
+    user_name = username_entry.get()
     user_password = password_entry.get()
     
     if user_name and user_password:
@@ -14,6 +14,9 @@ def save_credentials():
             messagebox.showerror("Error", f"An error occurred: {e}")
     else:
         messagebox.showwarning("Warning", "Please enter both name and password.")
+
+def login_forum():
+    pass
 
 # create main window
 root = tk.Tk()
@@ -36,7 +39,7 @@ password_entry.pack(pady=5)
 login_button = tk.Button(root, text="Submit", command=save_credentials)
 login_button.pack(pady=5)
 
-register_button = tk.Button(root, text="Register", command=register)
+register_button = tk.Button(root, text="Register", command=login_forum)
 register_button.pack(side=tk.BOTTOM, anchor=tk.SE, padx=10, pady=10)
 
 # Center horizontally
